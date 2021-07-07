@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTac.DAL.GameStorage;
 using TicTac.Domain.Model;
+using TicTac.Infrastructure.Extentions;
 using TicTac.Interfaces.Services;
 
 namespace TicTac.WebApi.Clients.GameProces
@@ -24,7 +25,7 @@ namespace TicTac.WebApi.Clients.GameProces
 
             if (_isValid is false) throw new Exception("This game is not exist");
 
-            _isValid = Field.CanPut(_games.Games[gameId], x, y);
+            _isValid = Field.CanPut(_games.Games[gameId], x.ToInt32(), y.ToInt32());
 
             if (_isValid is false) throw new Exception("You cant to put mark here!");
 

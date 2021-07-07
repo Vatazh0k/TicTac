@@ -15,7 +15,7 @@ namespace TicTac.WebApi.Controllers
 
         [HttpPost]
         public ActionResult Attack([FromHeader] string _id, string x, string y)
-        {
+        {//Возращать матричку?
             try
             {
                 _game.PutSign(_id, x, y);

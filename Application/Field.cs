@@ -10,12 +10,9 @@ namespace Application
 {
     public static class Field
     {
-        public static bool CanPut(Game game, string _x, string _y)
-        {
-            int x = Convert.ToInt32(_x);
-            int y = Convert.ToInt32(_y);
-
-            if (string.IsNullOrEmpty(game.Field[y, x]))
+        public static bool CanPut(Game game, int _x, int _y)
+        {//asign mark. Field will be null always...
+            if (string.IsNullOrEmpty(game.Field[_y, _x]))//
                 
             return true; return false; 
         }
