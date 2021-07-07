@@ -17,7 +17,7 @@ namespace Application
             return true; return false; 
         }
 
-        public static bool IsGameEnded(Game game)
+        public static bool IsGameEndedWithoutWinner(Game game)
         {
             for (int i = 0; i < game.Field.GetLength(0); i++)
             {
@@ -27,9 +27,32 @@ namespace Application
                 }
             }
 
-            game.IsFirstUserWin = game.IsFirstUserMove;
-
             return true;
+        }
+
+        public static bool IsGameEndedWithWinner(Game game)
+        {
+            if (IsGameOver(game.Field))
+            {
+                game.IsFirstUserWin = game.IsFirstUserMove;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsGameOver(string[,] field)
+        {
+
+            for (int i = 0; i < field.GetLength(0); i++)
+            {
+                for (int j = 0; j < field.GetLength(1); j++)
+                {
+                    
+                }
+            }
+
+            throw new NotImplementedException();
         }
     }
 }

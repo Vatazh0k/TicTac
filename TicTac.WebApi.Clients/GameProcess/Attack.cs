@@ -29,9 +29,23 @@ namespace TicTac.WebApi.Clients.GameProces
 
             if (_isValid is false) throw new Exception("You cant to put mark here!");
 
-            _games.Games[gameId].IsGameover = Field.IsGameEnded(_games.Games[gameId]);
+            _games.Games[gameId].IsGameover = Field.IsGameEndedWithWinner(_games.Games[gameId]);
 
-            if (_games.Games[gameId].IsGameover is true) return;
+            if (_games.Games[gameId].IsGameover is true)
+            {
+                _games.Games.Remove(gameId);
+
+                return;
+            }
+
+            _games.Games[gameId].IsGameover = Field.IsGameEndedWithoutWinner(_games.Games[gameId]);
+
+            if (_games.Games[gameId].IsGameover is true)
+            {
+                _games.Games.Remove(gameId);
+
+                throw new Exception("No winner :(");
+            }
 
             _games.Games[gameId].IsFirstUserMove = !_games.Games[gameId].IsFirstUserMove;
 
