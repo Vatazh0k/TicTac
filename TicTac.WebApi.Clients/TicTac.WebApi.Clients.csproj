@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\TicTac.DAL\TicTac.DAL.csproj" />
+    <ProjectReference Include="..\TicTac.Infrastructure\TicTac.Infrastructure.csproj" />
+    <ProjectReference Include="..\TicTac.Interfaces\TicTac.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
