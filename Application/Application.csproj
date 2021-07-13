@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TicTac.DAL\TicTac.DAL.csproj" />
+    <ProjectReference Include="..\TicTac.Infrastructure\TicTac.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,6 @@
 ﻿using Application;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TicTac.DAL.GameStorage;
-using TicTac.Domain.Model;
 using TicTac.Infrastructure.Extentions;
 using TicTac.Interfaces.Services;
 
@@ -25,6 +20,8 @@ namespace TicTac.WebApi.Clients.GameProces
 
             if (_isValid is false) throw new Exception("This game is not exist");
 
+            if (_games.Games[gameId].IsGameover is true) return;
+
             _isValid = Field.CanPut(_games.Games[gameId], x.ToInt32(), y.ToInt32());
 
             if (_isValid is false) throw new Exception("You cant to put mark here!");
@@ -33,7 +30,7 @@ namespace TicTac.WebApi.Clients.GameProces
 
             if (_games.Games[gameId].IsGameover is true)
             {
-                _games.Games.Remove(gameId);
+                _games.Games[gameId].IsFirstUserWin = _games.Games[gameId].IsFirstUserMove;
 
                 return;
             }

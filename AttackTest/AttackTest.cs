@@ -8,6 +8,7 @@ namespace AttackTest
     public class AttackTest
     {
         [TestMethod]
+        [Testca]
         public void TestMethod1()
         {
             var a = new Attack();
