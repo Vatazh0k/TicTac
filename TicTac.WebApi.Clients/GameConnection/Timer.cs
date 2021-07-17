@@ -7,14 +7,14 @@ namespace TicTac.WebApi.Clients.GameConnection
     public class Timer
     {
         private static System.Timers.Timer timer;
-        private static readonly int AvaibleMinutes = 1;//6
+        private static readonly int AvaibleMinutes = 5;
         public static bool IsActive { get; set; }
 
         public static void StartTimer()
         {
             IsActive = true;
 
-            timer = new System.Timers.Timer(200);//60000
+            timer = new System.Timers.Timer(30000);
 
             timer.Elapsed += (s, e) => Tick();
 
