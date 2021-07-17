@@ -5,7 +5,7 @@ namespace TicTac.Infrastructure.Extentions
     public static class GameFieldExtentions
     {
         public static bool HasWinner(this string[,] field)
-        {
+        {//To bl (bl element)
             for (int i = 0; i < field.GetLength(0); i++)
             {
                 var str = String

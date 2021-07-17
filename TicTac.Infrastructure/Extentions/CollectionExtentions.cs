@@ -11,19 +11,14 @@ namespace TicTac.Infrastructure.Extentions
     {
         public static int GetEmptyKey(this Dictionary<int, Game> game)
         {
-            try
-            {
-                for (int i = 1; i <= game.Keys.Max(); i++)
-                {
-                    if (!game.ContainsKey(i)) return i;
-                }
+            var key = game.Keys.Count > 0 
+                    ? game.Keys.Max() 
+                    : game.Keys.FirstOrDefault() + 1;
 
-                return game.Keys.Max() + 1;
-            }
-            catch (Exception)
-            {
-                return game.Keys.FirstOrDefault() + 1;
-            }
+            for (int current = 1; current <= key; current++) if (!game.ContainsKey(current))
+                    
+            return current; return key + 1;
+
         }
     }
 }

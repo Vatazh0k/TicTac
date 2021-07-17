@@ -3,6 +3,8 @@ using TicTac.Infrastructure.Extentions;
 using TicTac.Domain.Model;
 using System;
 using TicTac.DAL.GameStorage;
+using System.Threading;
+using TicTac.Infrastructure.Common;
 
 namespace TicTac.WebApi.Clients.GameConnection
 {
@@ -14,6 +16,8 @@ namespace TicTac.WebApi.Clients.GameConnection
 
             try
             {
+                Locker.Mutex.WaitOne();
+
                 var _key = _games.Games.GetEmptyKey();
 
                 _games.Games.Add(_key, new Game());
@@ -21,10 +25,15 @@ namespace TicTac.WebApi.Clients.GameConnection
                 if (Timer.IsActive is not true) Timer.StartTimer();
 
                 return _key.ToString();
+
             }
             catch (Exception)
             {
                 throw new Exception("No free game :(");
+            }
+            finally
+            {
+                Locker.Mutex.ReleaseMutex(); 
             }
         }
 
